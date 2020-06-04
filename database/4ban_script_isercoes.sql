@@ -9,11 +9,11 @@ INSERT INTO Tag (tag_nome, tag_descricao) VALUES('estranho', 'auto explicativo')
 
 
 
-INSERT INTO Usuario(usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('lenticar', 'lenticar', 'lenticar', true, '01-01-2020');
-INSERT INTO Usuario(usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('arthider', 'arthider', 'arthider', false, '02-01-2020');
-INSERT INTO Usuario(usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('rchmahet', 'rchmahet', 'rchmahet', false, '03-01-2020');
-INSERT INTO Usuario(usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('tershbul', 'tershbul', 'tershbul', false, '04-01-2020');
-INSERT INTO Usuario(usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('iblescup', 'iblescup', 'iblescup', false, '05--01-2020');
+INSERT INTO Usuario(usuario_email, usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('lenticar@gmail.com', 'lenticar', 'lenticar', 'lenticar', true, '01-01-2020');
+INSERT INTO Usuario(usuario_email, usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('arthider@gmail.com', 'arthider', 'arthider', 'arthider', false, '02-01-2020');
+INSERT INTO Usuario(usuario_email, usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('rchmahet@gmail.com', 'rchmahet', 'rchmahet', 'rchmahet', false, '03-01-2020');
+INSERT INTO Usuario(usuario_email, usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('tershbul@gmail.com', 'tershbul', 'tershbul', 'tershbul', false, '04-01-2020');
+INSERT INTO Usuario(usuario_email, usuario_login, usuario_senha, usuario_username, usuario_adm, usuario_data_cadastro) VALUES('iblescup@gmail.com', 'iblescup', 'iblescup', 'iblescup', false, '05--01-2020');
 
 
 

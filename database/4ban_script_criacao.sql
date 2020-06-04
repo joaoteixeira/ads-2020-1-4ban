@@ -1,5 +1,5 @@
 ﻿/*
-drop database if exists 4ban;
+--drop database if exists 4ban;
 create database 4ban;
 use 4ban;
 */
@@ -12,6 +12,7 @@ primary key(tag_id)
 );
 create table Usuario(
 usuario_id serial not null,
+usuario_email varchar(255),
 usuario_login varchar(255),
 usuario_senha varchar(255),
 usuario_username varchar(255),
