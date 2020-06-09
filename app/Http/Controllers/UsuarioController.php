@@ -61,9 +61,9 @@ class UsuarioController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id){//não funciona.
+    public function edit($id){
         $usuario = Usuario::find($id);
-        return view('usuario.edit', array('usuario' -> $usuario));
+        return view('usuario.edit', array('usuario' => $usuario));
     }
 
     /**
@@ -86,7 +86,7 @@ class UsuarioController extends Controller{
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){//restrição de chave estrangeira, não vai excluir os primeiros registros
+    public function destroy($id){//restrição de chave estrangeira, tem que colocar os tiggers no banco primeiro
         $usuario = Usuario::find($id);
         $usuario->delete();
 
@@ -96,6 +96,6 @@ class UsuarioController extends Controller{
     public function destroyConfirm($id){//dando o memso erro do edit, fazer do jeito acima
         $usuario = Usuario::find($id);
 
-        return view('usuario.destroy', ['usuario'->$usuario]);
+        return view('usuario.destroy', ['usuario'=>$usuario]);
     }
 }

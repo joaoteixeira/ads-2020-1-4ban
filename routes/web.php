@@ -24,4 +24,5 @@ Route::get('/sobre', function () {
 });
 
 Route::resource('/usuario', 'UsuarioController');
+Route::resource('/postagem', 'PostagemController');
 Route::get('/usuario/destroy/{id}', 'UsuarioController@destroyConfirm')->name('usuario.destroy-confirm');
