@@ -15,30 +15,15 @@
         </div>
     @endif
 
-    @if(count($postagem))
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Titulo</th>
-                    <th>Upvotes</th>
-                    <th>Downvotes</th>
-                    <th>Data de publicação</th>
-                    <th>Opções</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($postagem as $postagem)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $postagem->postagem_titulo }}</td>
-                        <td>{{ $postagem->postagem_up }}</td>
-                        <td>{{ $postagem->postagem_down }}</td>
-                        <td>{{ $postagem->postagem_data_publicacao }}</td>
-                        <td><a href="{{ route('postagem.show', $postagem->postagem_id) }}">Ver</a></td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    @if(count($postagens))       
+        @foreach($postagens as $postagens)
+            <div class="card mt-8">
+                <div class="card-body">
+                    <h3>{{ $postagens->postagem_titulo }}</h3>
+                    <p>{{ $postagens->postagem_data_publicacao }}</p>
+                    <a href="{{ route('postagem.show', $postagens->postagem_id) }}">Ver</a>
+                </div>
+            </div><br>
+        @endforeach
     @endif
 @endsection()

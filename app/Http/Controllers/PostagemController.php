@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Postagem;
+use App\Comentario;
 
 class PostagemController extends Controller{
     /**
@@ -13,7 +14,7 @@ class PostagemController extends Controller{
      */
     public function index(){
         $postagens = Postagem::All();
-        return view('postagem.index', array('postagem' => $postagens));
+        return view('postagem.index', array('postagens' => $postagens));
     }
 
     /**
@@ -43,7 +44,9 @@ class PostagemController extends Controller{
      */
     public function show($id){
         $postagem = Postagem::find($id);
-        return view('postagem.show', array('postagem' => $postagem));
+        $comentario = Comentario::All()->where('fk_postagem_id', $id);
+        $resposta = Comentario::All()->where('fk_comentario_id', !null);
+        return view('postagem.show', array('postagens' => $postagem), array('comentarios' => $comentario), array('respostas' => $resposta));
     }
 
     /**
@@ -75,5 +78,9 @@ class PostagemController extends Controller{
      */
     public function destroy($id){
         //
+    }
+
+    public function postComentarios($id){
+        
     }
 }
