@@ -11,6 +11,3 @@ class Comentario extends Model{
     //fk_comentario_id int, fk_postagem_id int, fk_usuario_id int,
     public $timestamps = false;  
 }
-
-
-    

@@ -45,8 +45,8 @@ class PostagemController extends Controller{
     public function show($id){
         $postagem = Postagem::find($id);
         $comentario = Comentario::All()->where('fk_postagem_id', $id);
-        $resposta = Comentario::All()->where('fk_comentario_id', !null);
-        return view('postagem.show', array('postagens' => $postagem), array('comentarios' => $comentario), array('respostas' => $resposta));
+        return view('postagem.show', array('postagens' => $postagem), 
+                                    array('comentarios' => $comentario));
     }
 
     /**

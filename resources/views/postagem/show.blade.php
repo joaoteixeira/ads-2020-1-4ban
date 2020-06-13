@@ -14,19 +14,18 @@
     <div>
         <div class="card card-outline-secondary my-4">
             <div class="card-header">Comentários</div>
-            
+
             @foreach($comentarios as $comentarios)
                 <div class="card-body">
+                    @if($comentarios->fk_comentario_id)
+                        <div class="text-white-50 bg-dark">
+                        <small class="">Id do comentário que esse comentário esta respondendo: {{ $comentarios->fk_comentario_id }}. Lembrar de trocar a consulta na tabela por uma consulta em uma view com essa tabela mais o nome do usuario que comentou</small>                        
+                        </div>
+                        
+                    @endif
                     <p>{{ $comentarios->comentario_texto }}</p>
                     <small class="text-muted">Postado por {{ $comentarios->fk_usuario_id }} em {{$comentarios->comentario_data_publicacao}}</small>
-                    <hr>
-
-                    @foreach($respostas as $respostas)
-                        <p>{{ $respostas->comentario_texto }}</p>
-                        <small class="text-muted">Postado por {{ $respostas->fk_usuario_id }} em {{$respostas->comentario_data_publicacao}}</small>
-                        <hr>
-                    @endforeach
-                    
+                    <hr>                    
                 </div>
             @endforeach
 
