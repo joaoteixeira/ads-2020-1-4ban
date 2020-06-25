@@ -3,6 +3,7 @@
 @section('content-title', 'Postagens')
 
 @section('content')
+<a href="{{ route('postagem.create') }}" class="btn btn-primary">Nova Postagem</a>
     @if(session('status'))
         <div class="alert alert-success">
             {{session('status')}}
@@ -19,9 +20,9 @@
         @foreach($postagens as $postagens)
             <div class="card mt-8">
                 <div class="card-body">
-                    <h3>{{ $postagens->postagem_titulo }}</h3>
+                    <a href="{{ route('postagem.show', $postagens->postagem_id) }}"><h3>{{ $postagens->postagem_titulo }}</h3></a>
+                    <p>Por AUTOR ::: </p>
                     <p>{{ $postagens->postagem_data_publicacao }}</p>
-                    <a href="{{ route('postagem.show', $postagens->postagem_id) }}">Ver</a>
                 </div>
             </div><br>
         @endforeach

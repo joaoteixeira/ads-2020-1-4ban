@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comentario;
 
-class ComentarioController extends Controller
-{
+class ComentarioController extends Controller{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         //
     }
 
@@ -21,8 +20,7 @@ class ComentarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         //
     }
 
@@ -32,9 +30,17 @@ class ComentarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request, Postagem $postagem){
+        $comentario = new Usuario();
+        $comentario->comentario_texto = $request->comentario_texto;
+        $comentario->comentario_fk_comentario_id = null;
+        $comentario->comentario_fk_postagem_id = $postagem->postagem_id;
+        //$comentario->comentario_fk_usuario_id = $request->comentario_fk_usuario_id;
+
+        $usuario->save();
+        //$comentario = Comentario::create($request->all());
+        
+        return redirect('postagem');
     }
 
     /**
@@ -43,8 +49,7 @@ class ComentarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         //
     }
 
@@ -54,8 +59,7 @@ class ComentarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
         //
     }
 
@@ -66,8 +70,7 @@ class ComentarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         //
     }
 
@@ -77,8 +80,7 @@ class ComentarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         //
     }
 }
