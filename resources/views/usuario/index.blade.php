@@ -45,13 +45,13 @@
                         <td>{{ $usuario->usuario_data_cadastro }}</td>
                         <td>
                             <a href="{{ route('usuario.edit', $usuario->usuario_id) }}">Editar</a>
-                            <form action="{{ route('usuario.destroy', $usuario->usuario_id) }}" method="post">
+                            <!-- <form action="{{ route('usuario.destroy', $usuario->usuario_id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-
                                 <button class="btn btn-link btn-sn" type="submit">Excluir 1</button>
-                            </form>
-                            <a href="{{ route('usuario.destroy-confirm', $usuario->usuario_id) }}">Excluir correto</a>
+                            </form> -->
+                            <a href="{{ route('usuario.destroy-confirm', $usuario->usuario_id) }}">Excluir</a>
+                            <a href="{{ route('usuario.show', $usuario->usuario_id) }}">Ver</a>
                         </td>
                     </tr>
                 @endforeach

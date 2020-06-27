@@ -41,7 +41,7 @@
 
     <div>
         <div class="card card-outline-secondary my-4">
-            <div class="card-header">Comentários</div>
+            <div class="card-header">Comentários</div>  
 
             @foreach($comentarios as $comentarios)
                 <div class="card-body">

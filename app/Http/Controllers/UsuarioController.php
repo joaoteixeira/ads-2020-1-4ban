@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuario;
+use App\Postagem;
+use App\Comentario;
 
 class UsuarioController extends Controller{
     /**
@@ -52,7 +54,12 @@ class UsuarioController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        //
+        $usuario = Usuario::All()->where('usuario_id', $id);
+        $postagem = Postagem::All()->where('fk_usuario_id', $id);
+        $comentario = Comentario::All()->where('fk_usuario_id', $id);
+        return view('usuario.show', array('usuarios' => $usuario), 
+                                    array('postagens' => $postagem), 
+                                    array('comentarios' => $comentario));
     }
 
     /**
