@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Postagem;
 use App\Comentario;
+use App\Usuario;
+use DB;
 
 class PostagemController extends Controller{
     /**
@@ -12,8 +14,17 @@ class PostagemController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index(){
-        $postagens = Postagem::All();
+        //$postagens = Postagem::All();
+        $postagens = DB::table('postagem')
+                        ->join('usuario', 'usuario.usuario_id', '=', 'postagem.fk_usuario_id')
+                        ->select('postagem.*', 'usuario.usuario_username')
+                        ->get();
         return view('postagem.index', array('postagens' => $postagens));
     }
 
@@ -23,7 +34,7 @@ class PostagemController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        //return view('postagem.create');
+        return view('postagem.create');
     }
 
     /**
@@ -33,7 +44,9 @@ class PostagemController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        //
+        $postagem = Postagem::create($request->all());
+        
+        return redirect('postagem');
     }
 
     /**
@@ -43,10 +56,21 @@ class PostagemController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $postagem = Postagem::find($id);
-        $comentario = Comentario::All()->where('fk_postagem_id', $id);
+        //$postagem = Postagem::find($id);
+        $postagem = DB::table('postagem')
+                        ->join('usuario', 'usuario.usuario_id', '=', 'postagem.fk_usuario_id')
+                        ->where('postagem.postagem_id', $id)
+                        ->select('postagem.*', 'usuario.*')
+                        ->get();
+
+        //$comentario = Comentario::All()->where('fk_postagem_id', $id);
+        $comentario = Db::table('comentario')
+                        ->join('usuario', 'usuario.usuario_id', '=', 'comentario.fk_usuario_id')
+                        ->where('comentario.fk_postagem_id', $id)
+                        ->select('usuario.*', 'comentario.*')
+                        ->get();
         return view('postagem.show', array('postagens' => $postagem), 
-                                    array('comentarios' => $comentario));
+                                    array('comment' => $comentario));
     }
 
     /**
@@ -80,7 +104,9 @@ class PostagemController extends Controller{
         //
     }
 
-    public function postComentarios($id){
-        
+    public function destroyConfirm($id){
+        $postagem = Postagem::find($id);
+
+        return view('postagem.destroy', ['postagem'=>$postagem]);
     }
 }

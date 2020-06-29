@@ -21,8 +21,12 @@
             <div class="card mt-8">
                 <div class="card-body">
                     <a href="{{ route('postagem.show', $postagens->postagem_id) }}"><h3>{{ $postagens->postagem_titulo }}</h3></a>
-                    <p>Por AUTOR ::: </p>
-                    <p>{{ $postagens->postagem_data_publicacao }}</p>
+                    @if($postagens->usuario_username)
+                        <p>Por {{ $postagens->usuario_username }} </p>
+                    @endif
+                    @if($postagens->postagem_data_publicacao)
+                        <p>{{ $postagens->postagem_data_publicacao }}</p>
+                    @endif
                 </div>
             </div><br>
         @endforeach

@@ -26,4 +26,9 @@ Route::get('/sobre', function () {
 Route::resource('/usuario', 'UsuarioController');
 Route::resource('/postagem', 'PostagemController');
 Route::resource('/comentario', 'ComentarioController');
+//Route::resource('/tag_post', 'Tag_has_postagemController');
 Route::get('/usuario/destroy/{id}', 'UsuarioController@destroyConfirm')->name('usuario.destroy-confirm');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

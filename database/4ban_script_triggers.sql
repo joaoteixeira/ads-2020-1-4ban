@@ -24,3 +24,12 @@ BEGIN
 delete from comentario where comentario.fk_comentario_id = OLD.comentario_id;
 END;
 $$ delimiter ;
+
+--adicionar data à publicacao
+delimiter $$ 
+CREATE TRIGGER data_postagem AFTER INSERT ON postagem FOR EACH ROW
+BEGIN 
+UPDATE postagem
+SET postagem_data_publicacao = curdate() WHERE postagem_id = NEW.postagem_id;
+END;
+$$ delimiter ;

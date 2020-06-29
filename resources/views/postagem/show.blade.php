@@ -26,13 +26,16 @@
 @section('content')
     <div class="card mt-4">
         <div class="card-body">
-            <h3>{{ $postagens->postagem_titulo }}</h3>
-            <p>{{ $postagens->postagem_data_publicacao }}</p>
-            <p>{{ $postagens->postagem_texto }}</p>
+            @foreach($postagens as $post)
+                <h3>{{ $post->postagem_titulo }}</h3>
+                <p>Postado por {{ $post->usuario_username }}</p>
+                <p>Data de publicação: {{ $post->postagem_data_publicacao }}</p>
+                <p>{{ $post->postagem_texto }}</p>
+            @endforeach
         </div>
     </div>
 
-    <form action="{{ route('comentario.store', $postagens) }}" method="post">
+    <form action="{{ route('comentario.store') }}" method="post">
       <div class="form-group"><br>
         <textarea name="comentario_texto" class="form-control" rows="3"></textarea>
       </div>
@@ -43,7 +46,7 @@
         <div class="card card-outline-secondary my-4">
             <div class="card-header">Comentários</div>  
 
-            @foreach($comentarios as $comentarios)
+            @foreach($comment as $comentarios)
                 <div class="card-body">
                     @if($comentarios->fk_comentario_id)
                         <div class="text-white-50 bg-dark">
@@ -53,10 +56,14 @@
                         <textarea name="hide" style="display:none;"></textarea>
                     @endif
                     <p>{{ $comentarios->comentario_texto }}</p>
-                    <small class="text-muted">{{ $comentarios->comentario_id }}: Postado por {{ $comentarios->fk_usuario_id }} em {{$comentarios->comentario_data_publicacao}}</small>
+                    <a href="{{ route('usuario.show', $comentarios->usuario_id) }}">VER</a>
+                    <small class="text-muted">Postado por 
+                                            {{ $comentarios->usuario_username }} em 
+                                            {{ $comentarios->comentario_data_publicacao }}</small>
                     
                     <div class="comment-meta">
-                    <span><a href="#">Deletar</a></span>
+                    
+                    <span><a href="#">Excluir</a></span>
                     <span>
                         <a class="" role="button" data-toggle="collapse" href="#replyCommentT" aria-expanded="false" aria-controls="collapseExample">Responder</a>
                     </span>
